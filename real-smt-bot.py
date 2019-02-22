@@ -16,9 +16,9 @@ def bot_login():
 	return r
 
 def run_bot(r, comments_replied_to):
-	for comment in r.subreddit("all").comments(limit = None):
-		if "persona" in comment.body.lower() and comment.id not in comments_replied_to and comment.author != r.user.me() and comment.author != "GoodBot_BadBot":
-			comment.reply("Play a real [Sheen Megoomi Tensay](https://youtu.be/TepXZN3Pw8o) \n***\n^I'm ^a ^bot *^bleep, ^bloop*")
+	for comment in r.subreddit("test").comments(limit = None):
+		if "persona" in comment.body.lower() and comment.id not in comments_replied_to and comment.author != r.user.me() and comment.subreddit != "megaten":
+			comment.reply("Weeb, play a real [Sheen Megoomi Tensay](https://youtu.be/zIjVvnO5lgM) \n\nLook at how [cool](https://youtu.be/ut9ekAp2drs) and [sexy](https://youtu.be/TepXZN3Pw8o) mainline SMT is! \n\n Here's Strange Journey's OP just [because](https://youtu.be/09Ty1p9tQEQ)\n\n(And in case you thought *any* bit of Persona was hard, [LOL](https://youtu.be/J3ZMnOx5tzU)) \n\n Sincerely, r/Megaten \n***\n^I'm ^a ^bot *^bleep, ^bloop* ^| ^downvote ^to ^remove")
 			comments_replied_to.append(comment.id)
 
 			with open("comments_replied_to.txt", "a") as f:
