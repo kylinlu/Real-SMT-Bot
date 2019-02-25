@@ -19,7 +19,7 @@ def run_bot(reddit, comments_replied_to):
 	for comment in reddit.subreddit("all").comments(limit = None):
 		if re.match("persona [45]", comment.body.lower()) and comment.id not in comments_replied_to and comment.author != reddit.user.me() and comment.subreddit != "megaten" and "bot" not in comment.author.name.lower():
 			comment.downvote()
-			comment.reply("**Dagda**: Hey kid, play a real [Sheen Megoomi Tensay](https://youtu.be/zIjVvnO5lgM) \n\nHumanity's filth brought out this anti-Persona [Schwarzwelt](https://youtu.be/09Ty1p9tQEQ) \n\nJust look at how [cool](https://youtu.be/ut9ekAp2drs) and [sexy](https://youtu.be/TepXZN3Pw8o) mainline Shin Megami Tensei is! \n\n(And in case you thought *any* bit of Persona was hard, [LOL](https://youtu.be/J3ZMnOx5tzU)) \n\nLifeProTip: Kill your \"friends\" in [SMT4 Apocalypse](https://youtu.be/A3EFjFJgX3g), they suck \n\nLove from r/Megaten's (chaos-aligned) Kylin \n\n***\n^I'm ^a ^bot *^bleep, ^bloop* ^| ^it's ^a ^joke ^| ^downvote ^to ^remove")
+			comment.reply("**Dagda**: Hey kid, play a real [Sheen Megoomi Tensay](https://youtu.be/zIjVvnO5lgM) \n\nHumanity's filth brought out this anti-Persona [Schwarzwelt](https://youtu.be/09Ty1p9tQEQ) \n\nJust look at how [cool](https://youtu.be/ut9ekAp2drs) and [sexy](https://youtu.be/TepXZN3Pw8o) mainline Shin Megami Tensei is! \n\n(And in case you thought *any* bit of Persona was hard, [LOL](https://youtu.be/J3ZMnOx5tzU)) \n\nLifeProTip: Kill your \"friends\" in [SMT4 Apocalypse](https://youtu.be/A3EFjFJgX3g), they suck \n\nLove from r/Megaten's (chaos-aligned) Kylin \n\n***\n^I'm ^a ^bot *^bleep, ^bloop* ^| ^**it's ^a ^joke** ^| ^downvote ^to ^remove")
 			comments_replied_to.append(comment.id)
 
 			with open("comments_replied_to.txt", "a") as file:
