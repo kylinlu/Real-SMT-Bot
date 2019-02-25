@@ -40,17 +40,15 @@ def delete_negative_comments(comments):
 	for comment in comments:
 		if comment.score < 1:
 			comment.delete()
-			print("removed")
 
 reddit = bot_login()
 comments_replied_to = get_saved_comments()
 comments = reddit.user.me().comments.new(limit = None)
 
 while True:
+	delete_negative_comments(comments)
 	try:
-		delete_negative_comments(comments)
 		run_bot(reddit, comments_replied_to)
 
-	except Exception as e:
-		print(e)
+	except Exception:
 		continue
