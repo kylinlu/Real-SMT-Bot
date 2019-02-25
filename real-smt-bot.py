@@ -5,7 +5,6 @@ import config
 import os
 import praw
 import re
-import time
 
 def bot_login():
 	reddit = praw.Reddit(username = config.username,
@@ -51,6 +50,5 @@ while True:
 		delete_negative_comments(comments)
 		run_bot(reddit, comments_replied_to)
 
-	except Exception as e:
-		print(e)
+	except Exception:
 		continue
