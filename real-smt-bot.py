@@ -15,7 +15,7 @@ def bot_login():
 
 	return reddit
 
-def run_bot(reddit, comments_replied_to, bot_comments):
+def run_bot(reddit, comments_replied_to):
 	for comment in reddit.subreddit("all").comments(limit = None):
 		delete_negative_comments(bot_comments)
 		if re.match("persona [45]", comment.body.lower()) and comment.id not in comments_replied_to and comment.author != reddit.user.me() and comment.subreddit != "megaten" and "bot" not in comment.author.name.lower():
@@ -44,11 +44,12 @@ def delete_negative_comments(comments):
 
 reddit = bot_login()
 comments_replied_to = get_saved_comments()
-bot_comments = reddit.user.me().comments.new(limit = None)
 
 while True:
 	try:
-		run_bot(reddit, comments_replied_to, bot_comments)
+		bot_comments = reddit.user.me().comments.new(limit = None)
+		delete_negative_comments(bot_comments)
+		run_bot(reddit, comments_replied_to)
 
 	except Exception:
 		continue
